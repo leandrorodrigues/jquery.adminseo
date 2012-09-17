@@ -113,7 +113,6 @@
 
     Plugin.prototype.init = function () {
     	var self = this;
-	
     	//slug:
     	$(self.options.titleField).blur(function() {
     		var value = $(this).val();
@@ -144,7 +143,6 @@
     	
     	var change = function(value) {   		
     		if($(self.options.descriptionField).val() == ''){
-    			console.log(value);
     			$(self.options.descriptionField).val(description(value));
     		}
     		if($(self.options.keywordsField).val() == ''){
@@ -156,8 +154,7 @@
     		$(self.options.textField).blur(function() { change($(self.options.textField).val()); });
     	}
     	else {
-    		value = $.trim($(self.options.ckEditor.getData()).text());
-    		self.options.ckEditor.on('blur', function() { change(value); });
+    		self.options.ckEditor.on('blur', function() { change($.trim($(self.options.ckEditor.getData()).text())); });
     	}
     	
     };
